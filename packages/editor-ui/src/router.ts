@@ -193,6 +193,23 @@ export const routes = [
 			},
 		},
 	},
+
+	{
+		path: '/subscribersList',
+		name: VIEWS.SUBSCRIBERSLIST,
+		components: {
+			default: subscribersListView,
+			sidebar: MainSidebar,
+		},
+		meta: {
+			permissions: {
+				allow: {
+					loginStatus: [LOGIN_STATUS.LoggedIn],
+				},
+			},
+		},
+	},
+	
 	{
 		path: '/executions',
 		name: VIEWS.EXECUTIONS,
