@@ -260,6 +260,14 @@ export default defineComponent({
 					activateOnRouteNames: [VIEWS.EXECUTIONS],
 				},
 				{
+					id: 'subscribersList',
+					icon: 'code',
+					label: this.$locale.baseText('mainSidebar.subscribersList'),
+					customIconSize: 'medium',
+					position: 'top',
+					activateOnRouteNames: [VIEWS.SUBSCRIBERSLIST],
+				},
+				{
 					id: 'settings',
 					icon: 'cog',
 					label: this.$locale.baseText('settings'),
