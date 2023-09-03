@@ -429,6 +429,12 @@ export default defineComponent({
 					}
 					break;
 				}
+				case 'subscribersList': {
+					if (this.$router.currentRoute.name !== VIEWS.SUBSCRIBERSLIST) {
+						this.goToRoute({ name: VIEWS.SUBSCRIBERSLIST });
+					}
+					break;
+				}
 				case 'executions': {
 					if (this.$router.currentRoute.name !== VIEWS.EXECUTIONS) {
 						this.goToRoute({ name: VIEWS.EXECUTIONS });
