@@ -55,7 +55,6 @@ export class Siprtc implements INodeType {
 			if (resource === 'play') {
 
 				if (operation === 'play') {
-					const media = this.getNodeParameter('soundfile', i);
 					responseData = `<Response><Play>https://example.com/audio.mp3</Play></Response>`;
 				}
 			} else if (resource === 'say') {
