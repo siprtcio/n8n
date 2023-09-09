@@ -56,12 +56,7 @@ export class Siprtc implements INodeType {
 
 				if (operation === 'play') {
 					const media = this.getNodeParameter('soundfile', i) as string,
-					responseData = const staticXML = `
-  <Response>
-    <Say>Hello, this is a static TwiML response.</Say>
-    <Play>https://example.com/audio.mp3</Play>
-  </Response>
-`;
+					responseData = `<Response><Say>Hello, this is a static TwiML response.</Say><Play>https://example.com/audio.mp3</Play></Response>`;
 				}
 			} else if (resource === 'say') {
 				
