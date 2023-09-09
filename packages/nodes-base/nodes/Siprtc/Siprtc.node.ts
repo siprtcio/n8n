@@ -65,8 +65,8 @@ export class Siprtc implements INodeType {
 			}
 
 			Array.isArray(responseData)
-				? returnData.push(...(responseData as IDataObject[]))
-				: returnData.push(responseData as IDataObject);
+				? returnData.push(...(responseData as string[]))
+				: returnData.push(responseData as string);
 		}
 
 		return [this.helpers.returnJsonArray(returnData)];
