@@ -55,18 +55,18 @@ export class Siprtc implements INodeType {
 			if (resource === 'play') {
 
 				if (operation === 'play') {
-					const media = this.getNodeParameter('soundfile', i) as string,
-					responseData = `<Response><Say>Hello, this is a static TwiML response.</Say><Play>https://example.com/audio.mp3</Play></Response>`;
+					const media = this.getNodeParameter('soundfile', i);
+					responseData = `<Response><Play>https://example.com/audio.mp3</Play></Response>`;
 				}
 			} else if (resource === 'say') {
-				
+				responseData = `<Response><Say>Hello, this is a static TwiML response.</Say></Response>`;
 			} else if (resource === 'gather') {
 				
 			}
 
 			Array.isArray(responseData)
-				? returnData.push(...(responseData as string[]))
-				: returnData.push(responseData as string);
+				? returnData.push(...(responseData as IDataObject[]))
+				: returnData.push(responseData as unknown as IDataObject);
 		}
 
 		return [this.helpers.returnJsonArray(returnData)];
