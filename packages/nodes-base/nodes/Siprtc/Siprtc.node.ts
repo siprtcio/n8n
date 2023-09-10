@@ -35,6 +35,18 @@ export class Siprtc implements INodeType {
 						name: 'Play',
 						value: 'play',
 					},
+					{
+						name: 'Gather',
+						value: 'Gather',
+					},
+					{
+						name: 'Say',
+						value: 'Say',
+					},
+					{
+						name: 'Hangup',
+						value: 'Hangup',
+					},
 				],
 				default: 'play',
 				required: true,
@@ -48,9 +60,9 @@ export class Siprtc implements INodeType {
 		const items = this.getInputData();
 		const returnData: IDataObject[] = [];
 
-		const resource = this.getNodeParameter('resource', 0);
-		const operation = this.getNodeParameter('operation', 0);
-		const l_mediaUrl = this.getNodeParameter('sourndfile', 0) as string;
+		const resource = this.getNodeParameter('resource', 0) as string;
+		const operation = this.getNodeParameter('operation', 0) as string;
+		const l_mediaUrl = this.getNodeParameter('soundfile', 0) as string;
 
 		// check is the previous node has xml data . if so append current xml to it.
 

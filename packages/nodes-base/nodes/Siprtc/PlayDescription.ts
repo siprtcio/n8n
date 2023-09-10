@@ -15,7 +15,7 @@ export const playOperations: INodeProperties[] = [
 			{
 				name: 'Play',
 				value: 'play',
-				description: 'play a sound file',
+				description: 'Play a sound file',
 				action: 'Play a Sound File',
 			},
 		],
@@ -32,7 +32,7 @@ export const playFields: INodeProperties[] = [
 		name: 'soundfile',
 		type: 'string',
 		default: '',
-		description: 'sound file to be played with the call',
+		description: 'Sound file to be played with the call',
 		placeholder: 'https://api.twilio.com/cowbell.mp3',
 		required: true,
 		displayOptions: {
