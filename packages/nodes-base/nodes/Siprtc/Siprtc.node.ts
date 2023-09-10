@@ -7,15 +7,14 @@ import type {
 } from 'n8n-workflow';
 
 import { playFields, playOperations } from './PlayDescription';
-var { XMLBuilder } from 'fast-xml-parser';
-var { decode } from 'html-entities';
-
+import { XMLBuilder } from 'fast-xml-parser';
+import { decode } from 'html-entities';
 
 export class Siprtc implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Siprtc',
 		name: 'siprtc',
-		icon: 'file:siprtc.png',
+		icon: 'file:siprtc.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -51,8 +50,7 @@ export class Siprtc implements INodeType {
 
 		const resource = this.getNodeParameter('resource', 0);
 		const operation = this.getNodeParameter('operation', 0);
-		const l_mediaUrl = this.getNodeParameter('sourndfile', 0);
-
+		const l_mediaUrl = this.getNodeParameter('sourndfile', 0) as string;
 
 		// check is the previous node has xml data . if so append current xml to it.
 
@@ -68,36 +66,33 @@ export class Siprtc implements INodeType {
 		//   parser.parse(previousXmlContent);
 		// }
 
-
 		for (let i = 0; i < items.length; i++) {
 			let responseData;
 			if (resource === 'play') {
 				if (operation === 'play') {
 					let obj = {};
-					let playobj = { Play: {} };
-					let mediaUrl = decode(l_mediaUrl);
+					const playobj = { Play: {} };
+					const mediaUrl = decode(l_mediaUrl);
 
 					if (mediaUrl.length > 0) {
-							playobj.Play = [
-								{ '#text': l_mediaUrl }
-							];
+						playobj.Play = [{ '#text': l_mediaUrl }];
 					}
 
-						obj = {
-							"?xml": {
-								"$version": "1.0",
-								"$encoding": "UTF-8"
-							},
-							Response: {
-								Play: playobj.Play
-							}
-						};
+					obj = {
+						'?xml': {
+							$version: '1.0',
+							$encoding: 'UTF-8',
+						},
+						Response: {
+							Play: playobj.Play,
+						},
+					};
 
 					const options = {
 						ignoreAttributes: false,
-						attributeNamePrefix: "$",
+						attributeNamePrefix: '$',
 						format: true,
-						suppressEmptyNode: true
+						suppressEmptyNode: true,
 					};
 
 					const builder = new XMLBuilder(options);
@@ -105,9 +100,8 @@ export class Siprtc implements INodeType {
 					responseData = xmlContent;
 				}
 			} else if (resource === 'say') {
-				responseData = `<Response><Say>Hello, this is a static TwiML response.</Say></Response>`;
+				responseData = '<Response><Say>Hello, this is a static TwiML response.</Say></Response>';
 			} else if (resource === 'gather') {
-
 			}
 
 			Array.isArray(responseData)
