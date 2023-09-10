@@ -38,15 +38,15 @@ export class Siprtc implements INodeType {
 					},
 					{
 						name: 'Gather',
-						value: 'Gather',
+						value: 'gather',
 					},
 					{
 						name: 'Say',
-						value: 'Say',
+						value: 'say',
 					},
 					{
 						name: 'Hangup',
-						value: 'Hangup',
+						value: 'hangup',
 					},
 				],
 				default: 'play',
