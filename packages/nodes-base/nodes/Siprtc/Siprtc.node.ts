@@ -7,7 +7,7 @@ import type {
 } from 'n8n-workflow';
 
 import { playFields, playOperations } from './PlayDescription';
-var { XMLBuilder, XMLParser } from 'fast-xml-parser';
+var { XMLBuilder } from 'fast-xml-parser';
 var { decode } from 'html-entities';
 
 
@@ -52,6 +52,21 @@ export class Siprtc implements INodeType {
 		const resource = this.getNodeParameter('resource', 0);
 		const operation = this.getNodeParameter('operation', 0);
 		const l_mediaUrl = this.getNodeParameter('sourndfile', 0);
+
+
+		// check is the previous node has xml data . if so append current xml to it.
+
+		// if (items.length > 0) {
+		// 	let previousXmlContent = items[0]
+		// 	items.length
+		// 	const options = {
+		// 		ignoreAttributes: false,
+		// 		attributeNamePrefix: "$",
+		// 		format: true
+		// 	};
+		// 	const parser = new XMLParser(options);
+		//   parser.parse(previousXmlContent);
+		// }
 
 
 		for (let i = 0; i < items.length; i++) {
