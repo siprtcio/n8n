@@ -12,7 +12,7 @@ export class Siprtc implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Siprtc',
 		name: 'siprtc',
-		icon: 'file:siprtc.svg',
+		icon: 'file:siprtc.png',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -48,6 +48,8 @@ export class Siprtc implements INodeType {
 
 		const resource = this.getNodeParameter('resource', 0);
 		const operation = this.getNodeParameter('operation', 0);
+		const sourndfile = this.getNodeParameter('sourndfile', 0);
+
 
 		for (let i = 0; i < items.length; i++) {
 			let responseData;
@@ -55,12 +57,12 @@ export class Siprtc implements INodeType {
 			if (resource === 'play') {
 
 				if (operation === 'play') {
-					responseData = `<Response><Play>https://example.com/audio.mp3</Play></Response>`;
+					responseData = `<Response><Play>`+sourndfile+`</Play></Response>`;
 				}
 			} else if (resource === 'say') {
 				responseData = `<Response><Say>Hello, this is a static TwiML response.</Say></Response>`;
 			} else if (resource === 'gather') {
-				
+
 			}
 
 			Array.isArray(responseData)
