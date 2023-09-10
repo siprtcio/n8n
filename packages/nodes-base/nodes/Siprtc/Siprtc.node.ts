@@ -7,6 +7,7 @@ import type {
 } from 'n8n-workflow';
 
 import { playFields, playOperations } from './PlayDescription';
+import { sayFields, sayOperations } from './SayDescription';
 import { XMLBuilder } from 'fast-xml-parser';
 import { decode } from 'html-entities';
 
@@ -53,6 +54,8 @@ export class Siprtc implements INodeType {
 			},
 			...playOperations,
 			...playFields,
+			...sayOperations,
+			...sayFields,
 		],
 	};
 
@@ -108,7 +111,7 @@ export class Siprtc implements INodeType {
 					};
 
 					const builder = new XMLBuilder(options);
-					const xmlContent = builder.build(obj);
+					const xmlContent = builder.build(obj) as string;
 					responseData = xmlContent;
 				}
 			} else if (resource === 'say') {

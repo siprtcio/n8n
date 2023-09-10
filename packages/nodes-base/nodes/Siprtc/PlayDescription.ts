@@ -42,4 +42,34 @@ export const playFields: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: 'Loop',
+		name: 'loop',
+		type: 'number',
+		default: '',
+		description: 'Number of loops play file to be played',
+		placeholder: '1',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['play'],
+				operation: ['play'],
+			},
+		},
+	},
+	{
+		displayName: 'Dtmf Digit',
+		name: 'dtmfDigits',
+		type: 'string',
+		default: '',
+		description: 'Send DTMF digits to connected voice call',
+		placeholder: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['play'],
+				operation: ['play'],
+			},
+		},
+	},
 ];
