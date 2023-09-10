@@ -61,7 +61,7 @@ export class Siprtc implements INodeType {
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
-		const returnData: IDataObject[] = [];
+		const returnData: INodeExecutionData[] = [];
 
 		const resource = this.getNodeParameter('resource', 0) as string;
 		const operation = this.getNodeParameter('operation', 0) as string;
@@ -119,11 +119,16 @@ export class Siprtc implements INodeType {
 			} else if (resource === 'gather') {
 			}
 
-			Array.isArray(responseData)
-				? returnData.push(...(responseData as IDataObject[]))
-				: returnData.push(responseData as unknown as IDataObject);
+			returnData.push({
+				json: {
+					['data']: responseData,
+				},
+				pairedItem: {
+					item: i,
+				},
+			});
 		}
 
-		return [this.helpers.returnJsonArray(returnData)];
+		return [returnData];
 	}
 }
